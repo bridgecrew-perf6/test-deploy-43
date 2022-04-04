@@ -1,67 +1,67 @@
-# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-# More GitHub Actions for Azure: https://github.com/Azure/actions
+# # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy Node.js app to Azure Web App - planning-poker-api
+# name: Build and deploy Node.js app to Azure Web App - planning-poker-api
 
-on:
-  push:
-    branches:
-      - main
-  workflow_dispatch:
+# on:
+#   push:
+#     branches:
+#       - main
+#   workflow_dispatch:
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v2
+#     steps:
+#       - uses: actions/checkout@v2
 
-      - name: Set up Node.js version
-        uses: actions/setup-node@v1
-        with:
-          node-version: '16.x'
+#       - name: Set up Node.js version
+#         uses: actions/setup-node@v1
+#         with:
+#           node-version: '16.x'
 
-      - name: npm install, build, and test
-        run: |
-          npm install
-          npm run build --if-present
+#       - name: npm install, build, and test
+#         run: |
+#           npm install
+#           npm run build --if-present
 
-      - name: 'Deploy to Azure Web App'
-        id: deploy-to-webapp
-        uses: azure/webapps-deploy@v2
-        with:
-          app-name: 'planning-poker-api'
-          slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_7665F9501B71422BB196929AF3B17D2C }}
-          package: .
+#       - name: 'Deploy to Azure Web App'
+#         id: deploy-to-webapp
+#         uses: azure/webapps-deploy@v2
+#         with:
+#           app-name: 'planning-poker-api'
+#           slot-name: 'Production'
+#           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_7665F9501B71422BB196929AF3B17D2C }}
+#           package: .
 
-      # - name: Zip files
-      #   run: tar -czvf backend.tar -C  
+#       # - name: Zip files
+#       #   run: tar -czvf backend.tar -C  
 
-      # - name: Upload artifact for deployment job
-      #   uses: actions/upload-artifact@v2
-      #   with:
-      #     name: node-app
-      #     path: .
+#       # - name: Upload artifact for deployment job
+#       #   uses: actions/upload-artifact@v2
+#       #   with:
+#       #     name: node-app
+#       #     path: .
 
-  # deploy:
-  #   runs-on: ubuntu-latest
-  #   needs: build
-  #   environment:
-  #     name: 'Production'
-  #     url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+#   # deploy:
+#   #   runs-on: ubuntu-latest
+#   #   needs: build
+#   #   environment:
+#   #     name: 'Production'
+#   #     url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
-  #   steps:
-  #     - name: Download artifact from build job
-  #       uses: actions/download-artifact@v2
-  #       with:
-  #         name: node-app
+#   #   steps:
+#   #     - name: Download artifact from build job
+#   #       uses: actions/download-artifact@v2
+#   #       with:
+#   #         name: node-app
 
-  #     - name: 'Deploy to Azure Web App'
-  #       id: deploy-to-webapp
-  #       uses: azure/webapps-deploy@v2
-  #       with:
-  #         app-name: 'planning-poker-api'
-  #         slot-name: 'Production'
-  #         publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_7665F9501B71422BB196929AF3B17D2C }}
-  #         package: .
+#   #     - name: 'Deploy to Azure Web App'
+#   #       id: deploy-to-webapp
+#   #       uses: azure/webapps-deploy@v2
+#   #       with:
+#   #         app-name: 'planning-poker-api'
+#   #         slot-name: 'Production'
+#   #         publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_7665F9501B71422BB196929AF3B17D2C }}
+#   #         package: .
